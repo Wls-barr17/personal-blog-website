@@ -1,0 +1,124 @@
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --text: #172033;
+  --muted: #64748b;
+  --line: #dce4ef;
+  --accent: #2563eb;
+  --accent-soft: #eaf1ff;
+  --green: #16825d;
+  --green-soft: #e7f7ef;
+  --violet: #7c3aed;
+  --cyan: #0284c7;
+  --shadow: 0 18px 54px rgb(15 23 42 / 9%);
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #090d18;
+  --surface: #111827;
+  --surface-2: #172235;
+  --text: #e7edf7;
+  --muted: #9aa9bd;
+  --line: #28364a;
+  --accent: #3b82f6;
+  --accent-soft: #142a4a;
+  --green: #52d29a;
+  --green-soft: #123328;
+  --violet: #a78bfa;
+  --cyan: #38bdf8;
+  --shadow: 0 20px 60px rgb(0 0 0 / 34%);
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+body::before {
+  background:
+    radial-gradient(ellipse at 12% 4%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 35%),
+    radial-gradient(ellipse at 88% 15%, color-mix(in srgb, var(--violet) 8%, transparent), transparent 31%),
+    radial-gradient(ellipse at 53% 80%, color-mix(in srgb, var(--cyan) 5%, transparent), transparent 35%);
+}
+
+.app-shell::before {
+  opacity: .2;
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 76%);
+}
+
+.topbar {
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  border-color: color-mix(in srgb, var(--line) 82%, transparent);
+}
+
+.brand-mark,
+.icon-button,
+.button,
+.search-trigger,
+.category-tabs button,
+.topnav button {
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.button.primary {
+  color: #fff;
+  background: linear-gradient(112deg, #2563eb, #4f46e5);
+  border: 1px solid transparent;
+  box-shadow: 0 7px 20px rgb(37 99 235 / 20%);
+}
+
+.button.primary:hover {
+  background: linear-gradient(112deg, #1d4ed8, #4338ca);
+  box-shadow: 0 10px 25px rgb(37 99 235 / 27%);
+  transform: translateY(-1px);
+}
+
+.icon-button:hover,
+.search-trigger:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 36%, var(--line));
+}
+
+.search-results > button.active-result,
+.search-results > button:hover {
+  background: var(--accent-soft);
+}
+
+.search-result-kind {
+  min-width: 57px;
+  padding: 5px 7px;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 9px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.search-results > button > span:nth-child(2) {
+  flex: 1;
+}
+
+.search-modal {
+  border: 1px solid var(--line);
+}
+
+.firestore-banner {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
